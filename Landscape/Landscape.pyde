@@ -1,4 +1,4 @@
-x = 0
+cloudx = 0
 carposition = -500
 
 
@@ -6,7 +6,7 @@ def setup():
     size (640,480)
 def draw():
     img = loadImage("car.png")
-    global x,carposition
+    global cloudx,carposition
     
     background(100,100,255)
     
@@ -64,15 +64,15 @@ def draw():
     
     
     #Cloud
-    x += 0.5
+    cloudx += 0.5
     noStroke();
     fill(255);
-    ellipse(x,50,50,50)
-    ellipse(x+40,50,50,50)
-    ellipse(x+70,50,50,50)
-    ellipse(x+25,13,50,50)
-    ellipse(x+60,13,50,50)
+    ellipse(cloudx,50,50,50)
+    ellipse(cloudx+40,50,50,50)
+    ellipse(cloudx+70,50,50,50)
+    ellipse(cloudx+25,13,50,50)
+    ellipse(cloudx+60,13,50,50)
     
     #Resetting the cloud if it goes out of the screen
-    if x == 700:
-        x = -100
+    if cloudx == 700:
+        cloudx = -100
