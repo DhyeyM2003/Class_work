@@ -4,13 +4,19 @@ carposition = -500
 
 def setup():
     size (640,480)
+    car = loadImage("car.png")
+    global car
+
 def draw():
-    img = loadImage("car.png")
-    global cloudx,carposition
-    
     background(100,100,255)
     
-    #The gray buildings 
+    buildings()
+    road(50)
+    draw_car(5)
+    cloud(0.5)
+
+
+def buildings():
     fill(128,128,128);
     rect(0,100,100,250)
     
@@ -31,8 +37,8 @@ def draw():
     
     fill(128,128,128);
     rect(600,140,100,260)
-   
-    
+
+def road(lanex):
     #The road 
     fill(0);
     rect(0,350,640,150)
@@ -43,28 +49,30 @@ def draw():
     ellipse(640,0,100,100)
     
     fill(255,255,0);
-    rect(50,400, 100,25)
+    rect(lanex,400, 100,25)
      
     fill(255,255,0);
-    rect(200,400, 100,25)
+    rect(lanex + 150,400, 100,25)
      
     fill(255,255,0);
-    rect(350,400,100,25)
+    rect(lanex + 300,400,100,25)
 
     fill(255,255,0);
-    rect(500,400, 100,25)
-    
+    rect(lanex + 450,400, 100,25)
+
+def draw_car(carspeed):
+    global carposition
     #moving car
-    carposition += 5
-    image(img,carposition,350,250,70)
+    carposition += carspeed
+    image(car,carposition,350,250,70)
     
     #Resetting the car if it goes out of frame
     if carposition == 700:
         carposition = -500
-    
-    
-    #Cloud
-    cloudx += 0.5
+
+def cloud(cloudspeed):
+    global cloudx
+    cloudx += cloudspeed
     noStroke();
     fill(255);
     ellipse(cloudx,50,50,50)
